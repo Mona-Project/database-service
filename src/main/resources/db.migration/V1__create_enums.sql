@@ -1,2 +1,0 @@
-CREATE TYPE user_status AS ENUM ('ACTIVE', 'INACTIVE');
-CREATE TYPE request_status AS ENUM ('PENDING', 'ACCEPTED', 'REJECTED');
