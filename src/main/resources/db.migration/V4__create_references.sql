@@ -1,8 +1,3 @@
--- FK: users -> teams
-ALTER TABLE users
-    ADD CONSTRAINT fk_user_team
-        FOREIGN KEY (team_id) REFERENCES teams (id) ON DELETE SET NULL;
-
 -- FK: tasks -> users (assigned)
 ALTER TABLE tasks
     ADD CONSTRAINT fk_task_assigned_user
@@ -27,3 +22,12 @@ ALTER TABLE timelogs
 ALTER TABLE timelogs
     ADD CONSTRAINT fk_timelog_task
         FOREIGN KEY (task_id) REFERENCES tasks (id) ON DELETE CASCADE;
+
+ALTER TABLE user_teams
+    ADD CONSTRAINT fk_user_teams_user
+        FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE;
+
+-- FK: user_teams -> teams
+ALTER TABLE user_teams
+    ADD CONSTRAINT fk_user_teams_team
+        FOREIGN KEY (team_id) REFERENCES teams (id) ON DELETE CASCADE;

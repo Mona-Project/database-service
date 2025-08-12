@@ -3,13 +3,13 @@ INSERT INTO teams (id, name)
 VALUES ('00000000-0000-0000-0000-000000000001', 'Alpha Team'),
        ('00000000-0000-0000-0000-000000000002', 'Beta Team');
 
--- Insert Users
-INSERT INTO users (id, username, email, password, role, team_id)
-VALUES ('10000000-0000-0000-0000-000000000001', 'admin1', 'admin@example.com', 'admin123', 'ADMIN', null),
-       ('10000000-0000-0000-0000-000000000002', 'manager1', 'manager@example.com', 'manager123', 'MANAGER',
-        '00000000-0000-0000-0000-000000000001'),
-       ('10000000-0000-0000-0000-000000000003', 'employee1', 'employee1@example.com', 'employee123', 'EMPLOYEE',
-        '00000000-0000-0000-0000-000000000001');
+-- Insert Users without team_id column
+INSERT INTO users (id, username, email, password, role)
+VALUES
+    ('10000000-0000-0000-0000-000000000001', 'admin1', 'admin@example.com', 'admin123', 'ADMIN'),
+    ('10000000-0000-0000-0000-000000000002', 'manager1', 'manager@example.com', 'manager123', 'MANAGER'),
+    ('10000000-0000-0000-0000-000000000003', 'employee1', 'employee1@example.com', 'employee123', 'EMPLOYEE');
+
 
 -- Insert Tasks
 INSERT INTO tasks (id, title, description, status, assigned_user_id, team_id, created_by)
@@ -25,3 +25,8 @@ VALUES ('30000000-0000-0000-0000-000000000001', '10000000-0000-0000-0000-0000000
         '20000000-0000-0000-0000-000000000001', 4),
        ('30000000-0000-0000-0000-000000000002', '10000000-0000-0000-0000-000000000003',
         '20000000-0000-0000-0000-000000000001', 3);
+
+INSERT INTO user_teams (user_id, team_id)
+VALUES
+    ('10000000-0000-0000-0000-000000000002', '00000000-0000-0000-0000-000000000001'),
+    ('10000000-0000-0000-0000-000000000003', '00000000-0000-0000-0000-000000000001');

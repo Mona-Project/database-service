@@ -13,10 +13,10 @@ CREATE TABLE users
     username   VARCHAR(50) UNIQUE  NOT NULL,
     email      VARCHAR(100) UNIQUE NOT NULL,
     password   VARCHAR(255)        NOT NULL,
-    role       user_role           NOT NULL DEFAULT 'EMPLOYEE',
-    team_id    UUID,
+    role       VARCHAR(20)           NOT NULL DEFAULT 'EMPLOYEE',
     created_at TIMESTAMP                    DEFAULT NOW()
 );
+
 
 -- Tasks
 CREATE TABLE tasks
@@ -40,4 +40,10 @@ CREATE TABLE timelogs
     hours_worked INT  NOT NULL,
     log_date     DATE             DEFAULT CURRENT_DATE,
     created_at   TIMESTAMP        DEFAULT NOW()
+);
+
+CREATE TABLE user_teams
+(
+    user_id UUID NOT NULL,
+    team_id UUID NOT NULL
 );
